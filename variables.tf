@@ -1,16 +1,4 @@
-resource "aws_s3_bucket" "my-tokkalo-bucket" {
-    bucket_prefix = var.bucket_prefix
-    acl = var.acl
-    
-     versioning {
-      enabled = var.versioning
-    }
-    
-    tags = var.tags
-  }
-
-  
-  variable "aws_region" {
+     variable "aws_region" {
     description = "The AWS region to create things in." 
     default     = "ap-south-1" 
 }
@@ -51,7 +39,7 @@ variable "acl" {
 variable "bucket_prefix" {
  type        = string
  description = "(required since we are not using 'bucket') Creates a unique bucket name beginning with the specified prefix"
- default     = "my-s3-bucket-"
+ default     = "my-tokkalo-bucket-"
 }
 variable "tags" {
  type        = map
