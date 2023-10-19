@@ -1,8 +1,7 @@
 terraform {
   backend "s3" {
-    bucket = "my-tf-state-bckup"
+    bucket = "my-tf-state-backup"
     key = "main"
     region = "ap-south-1"
-    dynamodb_table = "my-dynamo-table"
   }
 }
