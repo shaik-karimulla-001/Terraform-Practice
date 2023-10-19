@@ -1,9 +1,11 @@
+# Specify the AWS provider and region using variables
 provider "aws" {
   region = var.aws_region
 }
 
+# Create a VPC
 resource "aws_vpc" "main" {
-  cidr_block = "172.16.0.0/16"
+  cidr_block       = "172.16.0.0/16"
   instance_tenancy = "default"
   tags = {
     Name = "main"
@@ -13,27 +15,28 @@ resource "aws_vpc" "main" {
 # Create a security group with firewall rules
 resource "aws_security_group" "jenkins-sg-2022" {
   name        = var.security_group
-  description = "security group for EC2 instance"
+  description = "Security group for EC2 instance"
 
+  # Ingress rules
   ingress {
     from_port   = 8080
     to_port     = 8080
-    protocol    = "tcp"  # Use lowercase "tcp" instead of "TCP"
+    protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
   }
 
   ingress {
     from_port   = 22
     to_port     = 22
-    protocol    = "tcp"  # Use lowercase "tcp" instead of "TCP"
+    protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
   }
 
-  # Outbound from Jenkins server
+  # Egress rule (outbound from Jenkins server)
   egress {
     from_port   = 0
     to_port     = 65535
-    protocol    = "tcp"  # Use lowercase "tcp" instead of "TCP"
+    protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
   }
 
@@ -42,6 +45,7 @@ resource "aws_security_group" "jenkins-sg-2022" {
   }
 }
 
+# Create an EC2 instance
 resource "aws_instance" "myfirst-Terraform-Instance" {
   ami           = var.ami_id
   key_name      = var.key_name
@@ -52,8 +56,9 @@ resource "aws_instance" "myfirst-Terraform-Instance" {
   }
 }
 
-resource "aws_dynamodb_table" "my_dynamo_table" {
-  name           = "my-dynamo_table"
+# Create a DynamoDB table
+resource "aws_dynamodb_table" "new_dynamo_table" {
+  name           = "my-dynamo-table"  # Name should not contain underscores
   billing_mode   = "PAY_PER_REQUEST"
   read_capacity  = 5
   write_capacity = 5
