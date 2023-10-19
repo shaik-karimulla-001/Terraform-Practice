@@ -54,7 +54,7 @@ resource "aws_instance" "myfirst-Terraform-Instance" {
 
 resource "aws_dynamodb_table" "my_dynamo_table" {
   name           = "my-dynamo_table"
-  billing_mode   = "PROVISIONED"
+  billing_mode   = "PAY_PER_REQUEST"
   read_capacity  = 5
   write_capacity = 5
 }
