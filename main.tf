@@ -10,30 +10,30 @@ resource "aws_vpc" "main" {
   }
 }
 
-#Create security group with firewall rules
-resource "aws_security_group" "jenkins-sg-2022" {
+#Create a security group with firewall rules
+resource "aws_security_group" "Jenkins-sg-2022" {
   name        = var.security_group
   description = "security group for Ec2 instance"
 
   ingress {
     from_port   = 8080
     to_port     = 8080
-    protocol    = "tcp"
+    protocol    = "TCP"
     cidr_blocks = ["0.0.0.0/0"]
   }
 
  ingress {
     from_port   = 22
     to_port     = 22
-    protocol    = "tcp"
+    protocol    = "TCP"
     cidr_blocks = ["0.0.0.0/0"]
   }
 
- # outbound from jenkis server
+ # Outbound from jenkis server
   egress {
     from_port   = 0
     to_port     = 65535
-    protocol    = "tcp"
+    protocol    = "TCP"
     cidr_blocks = ["0.0.0.0/0"]
   }
 
@@ -51,3 +51,9 @@ resource "aws_instance" "myfirst-Terraform-Instance" {
     Name = var.tag_name
   }
 }
+
+resource "aws_dynamodb_table" "my_table" {
+  name           = "my-dynamo-table"
+  billing_mode   = "PROVISIONED"  # You can choose either "PROVISIONED" or "PAY_PER_REQUEST"
+  read_capacity  = 5              # The read capacity units (only required for PROVISIONED mode)
+  write_capacity = 5              # The write capacity units (only required for PROVISIONED mode)
