@@ -9,20 +9,23 @@ pipeline {
         stage('SCM Checkout') {
             steps {
                 script {
+                    // Checkout the code from the Git repository
                     checkout([$class: 'GitSCM', branches: [[name: '*/main']],
-                        userRemoteConfigs: [[credentialsId: 'github', url: 'https://github.com/shaik-karimulla-001/Terraform-Practice.git']]])
+                        userRemoteConfigs: [[credentialsId: 'github', url: 'https://github.com/shaik-karimulla-001/Terraform-Practice.git']])
                 }
             }
         }
-        
-        stage("terraform init") {
+
+        stage("Terraform Init") {
             steps {
+                // Initialize Terraform with reconfiguration
                 sh "terraform init -reconfigure"
             }
         }
-        
-        stage("terraform plan") {
+
+        stage("Terraform Plan") {
             steps {
+                // Run Terraform plan
                 sh "terraform plan"
             }
         }
@@ -30,7 +33,8 @@ pipeline {
         stage("Terraform Action") {
             steps {
                 echo "Terraform action is --> ${action}"
-                sh ("terraform ${action} -lock=false --auto-approve")
+                // Run Terraform with the specified action (apply/destroy/etc.)
+                sh "terraform ${action} -lock=false --auto-approve"
             }
         }
     }
