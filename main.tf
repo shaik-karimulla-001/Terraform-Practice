@@ -71,8 +71,15 @@ resource "aws_dynamodb_table" "new-dynamodb-table" {
     type = "S" # String
   }
 
+ attribute {
+    name = "chintu"
+    type = "m" # String
+  }
+
+
   key_schema {
     hash_key = "karim"
+    range_key = "chintu"
   }
 }
 
