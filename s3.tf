@@ -1,12 +1,10 @@
 resource "aws_s3_bucket" "my-tokkalo-bucket" {
-  bucket_prefix = var.bucket_prefix
+  bucket = "your-bucket-name"  # Replace with your desired bucket name
   acl = var.acl
-  
-   versioning {
+
+  versioning {
     enabled = var.versioning
   }
-  
+
   tags = var.tags
 }
-    
-    
