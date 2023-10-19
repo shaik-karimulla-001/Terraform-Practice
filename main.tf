@@ -60,7 +60,7 @@ provider "aws" {
   region = "ap-south-1" # Use the desired AWS region
 }
 
-resource "aws_dynamodb_table" "example" {
+resource "aws_dynamodb_table" "new-dynamodb-table" {
   name           = var.table_name
   billing_mode   = "PROVISIONED" # You can choose "PAY_PER_REQUEST" for on-demand capacity
   read_capacity  = 5             # Adjust as needed
