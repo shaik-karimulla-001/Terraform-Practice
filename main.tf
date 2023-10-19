@@ -56,8 +56,7 @@ resource "aws_instance" "myfirst-Terraform-Instance" {
   }
 }
 
-# Define the DynamoDB table
-
+# create the DynamoDB table
 resource "aws_dynamodb_table" "new-dynamodb-table" {
   name           = "new-dynamodb-table"
   billing_mode   = "PAY_PER_REQUEST" # You can also use "PROVISIONED" for provisioned capacity
