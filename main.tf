@@ -10,50 +10,51 @@ resource "aws_vpc" "main" {
   }
 }
 
-#Create a security group with firewall rules
-resource "aws_security_group" "Jenkins-sg-2022" {
+# Create a security group with firewall rules
+resource "aws_security_group" "jenkins-sg-2022" {
   name        = var.security_group
-  description = "security group for Ec2 instance"
+  description = "security group for EC2 instance"
 
   ingress {
     from_port   = 8080
     to_port     = 8080
-    protocol    = "TCP"
+    protocol    = "tcp"  # Use lowercase "tcp" instead of "TCP"
     cidr_blocks = ["0.0.0.0/0"]
   }
 
- ingress {
+  ingress {
     from_port   = 22
     to_port     = 22
-    protocol    = "TCP"
+    protocol    = "tcp"  # Use lowercase "tcp" instead of "TCP"
     cidr_blocks = ["0.0.0.0/0"]
   }
 
- # Outbound from jenkis server
+  # Outbound from Jenkins server
   egress {
     from_port   = 0
     to_port     = 65535
-    protocol    = "TCP"
+    protocol    = "tcp"  # Use lowercase "tcp" instead of "TCP"
     cidr_blocks = ["0.0.0.0/0"]
   }
 
-  tags= {
+  tags = {
     Name = var.security_group
   }
 }
 
 resource "aws_instance" "myfirst-Terraform-Instance" {
   ami           = var.ami_id
-  key_name = var.key_name
+  key_name      = var.key_name
   instance_type = var.instance_type
   vpc_security_group_ids = [aws_security_group.jenkins-sg-2022.id]
-  tags= {
+  tags = {
     Name = var.tag_name
   }
 }
 
-resource "aws_dynamodb_table" "my_table" {
-  name           = "my-dynamo-table"
-  billing_mode   = "PROVISIONED"  # You can choose either "PROVISIONED" or "PAY_PER_REQUEST"
-  read_capacity  = 5              # The read capacity units (only required for PROVISIONED mode)
-  write_capacity = 5              # The write capacity units (only required for PROVISIONED mode)
+resource "aws_dynamodb_table" "my_dynamo_table" {
+  name           = "my-dynamo_table"
+  billing_mode   = "PROVISIONED"
+  read_capacity  = 5
+  write_capacity = 5
+}
