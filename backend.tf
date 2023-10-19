@@ -1,6 +1,6 @@
 terraform {
   backend "s3" {
-    bucket = "my-tokkalo-bucket-tf-state"
+    bucket = "my-tokkalo-bucket"
     key    = "main"
     region = "ap-south-1"
   }
