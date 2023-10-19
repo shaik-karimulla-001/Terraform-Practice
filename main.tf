@@ -13,7 +13,7 @@ resource "aws_vpc" "main" {
 }
 
 # Create a security group with firewall rules
-resource "aws_security_group" "jenkins-sg-2022" {
+resource "aws_security_group" "terraform-sgroup-dec-202" {
   name        = var.security_group
   description = "Security group for EC2 instance"
 
