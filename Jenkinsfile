@@ -1,34 +1,37 @@
 pipeline {
     agent any
 
+    environment {
+        action = 'apply' // Set your default action here
+    }
+
     stages {
         stage('SCM Checkout') {
             steps {
-                checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[credentialsId: 'github', url: 'https://github.com/shaik-karimulla-001/Terraform-Practice.git']])
+                script {
+                    checkout([$class: 'GitSCM', branches: [[name: '*/main']],
+                        userRemoteConfigs: [[credentialsId: 'github', url: 'https://github.com/shaik-karimulla-001/Terraform-Practice.git']]])
+                }
             }
         }
         
-        stage ("terraform init") {
+        stage("terraform init") {
             steps {
-                sh ("terraform init -reconfigure")
+                sh "terraform init -reconfigure"
             }
-            
         }
         
-        stage ("terraform plan") {
+        stage("terraform plan") {
             steps {
-                sh ("terraform plan")
+                sh "terraform plan"
             }
-            
         }
 
-        stage ("action") {
+        stage("Terraform Action") {
             steps {
                 echo "Terraform action is --> ${action}"
-                sh ("terraform ${action} -lock=false --auto-approve")
-            }   
-
+                sh "terraform ${action} -lock=false --auto-approve"
+            }
         }
-
     }
 }
