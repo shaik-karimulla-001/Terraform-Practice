@@ -55,11 +55,22 @@ resource "aws_instance" "myfirst-Terraform-Instance" {
     Name = var.tag_name
   }
 }
-
-# Create a DynamoDB table
-resource "aws_dynamodb_table" "new_dynamo_table" {
-  name           = "my-dynamo-table"  # Name should not contain underscores
-  billing_mode   = "PAY_PER_REQUEST"
-  read_capacity  = 5
-  write_capacity = 5
+#create dynamodb table
+variable "table_name" {
+  description = "Name for the DynamoDB table"
+  type        = string
+  default     = "my-dynamo-table"
 }
+
+variable "read_capacity" {
+  description = "Read capacity for the DynamoDB table"
+  type        = number
+  default     = 5
+}
+
+variable "write_capacity" {
+  description = "Write capacity for the DynamoDB table"
+  type        = number
+  default     = 5
+}
+
