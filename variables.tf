@@ -15,7 +15,7 @@ variable "instance_type" {
 
 variable "security_group" { 
  description = "Name of security group" 
- default     = "terraform-sgroup-dec-2021" 
+ default     = "terraform-sg-group" 
 }
 
 variable "tag_name" { 
