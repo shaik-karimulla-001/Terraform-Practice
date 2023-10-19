@@ -56,12 +56,8 @@ resource "aws_instance" "myfirst-Terraform-Instance" {
   }
 }
 
-  # Define the provider and region
-provider "aws" {
-  region = "us-east-1" # Change this to your desired AWS region
-}
-
 # Define the DynamoDB table
+
 resource "aws_dynamodb_table" "new-dynamodb-table" {
   name           = "new-dynamodb-table"
   billing_mode   = "PAY_PER_REQUEST" # You can also use "PROVISIONED" for provisioned capacity
