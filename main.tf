@@ -56,21 +56,24 @@ resource "aws_instance" "myfirst-Terraform-Instance" {
   }
 }
 #create dynamodb table
-variable "table_name" {
-  description = "Name for the DynamoDB table"
-  type        = string
-  default     = "my-dynamo-table"
+provider "aws" {
+  region = "ap-south-1" # Use the desired AWS region
 }
 
-variable "read_capacity" {
-  description = "Read capacity for the DynamoDB table"
-  type        = number
-  default     = 5
+resource "aws_dynamodb_table" "example" {
+  name           = var.table_name
+  billing_mode   = "PROVISIONED" # You can choose "PAY_PER_REQUEST" for on-demand capacity
+  read_capacity  = 5             # Adjust as needed
+  write_capacity = 5             # Adjust as needed
+
+  attribute {
+    name = "karim"
+    type = "S" # String
+  }
+
+  key_schema {
+    hash_key = "karim"
+  }
 }
 
-variable "write_capacity" {
-  description = "Write capacity for the DynamoDB table"
-  type        = number
-  default     = 5
-}
-
+ 
