@@ -13,7 +13,7 @@ resource "aws_vpc" "main" {
 }
 
 # Create a security group with firewall rules
-resource "aws_security_group" "terraform-sgroup-dec-202" {
+resource "aws_security_group" "terraform-sgroup-dec-2022" {
   name        = var.security_group
   description = "Security group for EC2 instance"
 
@@ -55,31 +55,28 @@ resource "aws_instance" "myfirst-Terraform-Instance" {
     Name = var.tag_name
   }
 }
-#create dynamodb table
+
+  # Define the provider and region
 provider "aws" {
-  region = "ap-south-1" # Use the desired AWS region
+  region = "us-east-1" # Change this to your desired AWS region
 }
 
+# Define the DynamoDB table
 resource "aws_dynamodb_table" "new-dynamodb-table" {
-  name           = var.table_name
-  billing_mode   = "PROVISIONED" # You can choose "PAY_PER_REQUEST" for on-demand capacity
-  read_capacity  = 5             # Adjust as needed
-  write_capacity = 5             # Adjust as needed
+  name           = "new-dynamodb-table"
+  billing_mode   = "PAY_PER_REQUEST" # You can also use "PROVISIONED" for provisioned capacity
+  hash_key       = "my-apple-key" 
+  range_key      = "my-android-key" 
+ 
 
   attribute {
-    name = "karim"
-    type = "S" # String
+    name = "my-apple-key"
+    type = "S"
   }
 
- attribute {
-    name = "chintu"
-    type = "m" # String
-  }
-
-
-  key_schema {
-    hash_key = "karim"
-    range_key = "chintu"
+  attribute {
+    name = "my-android-key"
+    type = "N" 
   }
 }
 
