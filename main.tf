@@ -13,7 +13,9 @@ resource "aws_vpc" "main" {
 }
 
 # Create a security group with firewall rules
-resource "aws_security_group" "terraform-sg-group" {
+resource "aws_security_group" "super-secure"
+
+{
   name        = var.security_group
   description = "Security group for EC2 instance"
 
@@ -50,7 +52,7 @@ resource "aws_instance" "myfirst-Terraform-Instance" {
   ami           = var.ami_id
   key_name      = var.key_name
   instance_type = var.instance_type
-  vpc_security_group_ids = [aws_security_group.terraform-sg-group.id]
+  vpc_security_group_ids = [aws_security_group.super-secure.id]
   tags = {
     Name = var.tag_name
   }
