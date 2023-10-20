@@ -10,7 +10,7 @@ variable "key_name" {
 
 variable "instance_type" { 
  description = "instance type for ec2" 
- default     =  "t2.medium" 
+ default     =  "t2.micro" 
 }
 
 variable "security_group" { 
@@ -20,11 +20,11 @@ variable "security_group" {
 
 variable "tag_name" { 
  description = "Tag Name of for Ec2 instance" 
- default     = "myfirst-Terraform-Instance" 
+ default     = "yellow-instance" 
 } 
 variable "ami_id" { 
  description = "AMI for Ubuntu Ec2 instance" 
- default     = "ami-0a5ac53f63249fba0" 
+ default     = "ami-099b3d23e336c2e83" 
 }
 variable "versioning" {
  type        = bool
@@ -39,7 +39,7 @@ variable "acl" {
 variable "bucket_prefix" {
  type        = string
  description = "(required since we are not using 'bucket') Creates a unique bucket name beginning with the specified prefix"
- default     = "my-tokkalo-bucket"
+ default     = "marathali-bucket"
 }
 variable "tags" {
  type        = map
