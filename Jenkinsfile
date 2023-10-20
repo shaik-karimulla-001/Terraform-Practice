@@ -1,10 +1,6 @@
 pipeline {
     agent any
 
-    environment {
-        action = 'apply' // Set your default action here
-    }
-
     stages {
         stage('SCM Checkout') {
             steps {
