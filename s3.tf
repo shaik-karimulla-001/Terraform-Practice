@@ -1,4 +1,4 @@
-resource "aws_s3_bucket" "my-tokkalo-bucket" {
+resource "aws_s3_bucket" "marathali-bucket" {
  bucket_prefix = var.bucket_prefix
   acl = var.acl
   
