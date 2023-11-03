@@ -57,8 +57,8 @@ resource "aws_instance" "yellow-instance" {
 }
 
 # Create the DynamoDB table
-resource "aws_dynamodb_table" "new-dynamodb-table" {
-  name           = "new-dynamodb-table"
+resource "aws_dynamodb_table" "my-dynamodb-table" {
+  name           = "my-dynamodb-table"
   billing_mode   = "PAY_PER_REQUEST"
   hash_key       = "my-apple-key"
   range_key      = "my-android-key"
