@@ -1,6 +1,6 @@
 # Specify the AWS provider and region using variables
 provider "aws" {
-  region = var.aws_region
+  region ="us-east-1"
 }
 
 # Create a VPC
