@@ -1,6 +1,7 @@
 # Specify the AWS provider and region using variables
-provider "aws" {
-  region ="us-east-1"
+variable "aws_region" {
+  type    = string
+  default = "us-east-1"  # You can set a default value or leave it empty
 }
 
 # Create a VPC
