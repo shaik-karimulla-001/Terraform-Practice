@@ -6,7 +6,7 @@ pipeline {
             steps {
                 script {
                     // Checkout the code from the Git repository
-                    checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/shaik-karimulla-001/Terraform-Practice.git']])
+                    checkout scmGit(branches: [[name: '*/Modules']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/shaik-karimulla-001/Terraform-Practice.git']])
                 }
             }
         }
