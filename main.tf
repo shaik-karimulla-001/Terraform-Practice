@@ -1,6 +1,6 @@
 # Specify the AWS provider and region using variables
 provider "aws" {
-  region = "us-east-1"
+  region = var.aws_region
 }
 
 # Create a VPC
@@ -14,7 +14,7 @@ resource "aws_vpc" "main" {
 
 # Create a security group with firewall rules
 resource "aws_security_group" "super-secure" {
-  name        = var.security_group
+  name        = "var.security_group"
   description = "Security group for EC2 instance"
 
   # Ingress rules
@@ -41,7 +41,7 @@ resource "aws_security_group" "super-secure" {
   }
 
   tags = {
-    Name = var.security_group
+    Name = "var.security_group"
   }
 }
 
