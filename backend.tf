@@ -1,7 +1,7 @@
 terraform {
   backend "s3" {
     bucket = "marathali-bucket"
-    key    = "main"
+    key    = "Modules"
     region = "us-east-1"
   }
 }
