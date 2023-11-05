@@ -12,3 +12,8 @@ variable "instance_type" {
   description = "The EC2 instance type"
   default     = "t2.micro"
 }
+
+variable "key_name" {
+  description = "SSH keys to connect to ec2 instance"
+  default     = "karim"
+}
