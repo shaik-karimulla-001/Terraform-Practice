@@ -7,6 +7,6 @@ resource "aws_instance" "example" {
   instance_type = var.instance_type
 }
 
-variable "key_name" {
+resource "key_name" {
   default     = "var.key_name
 }
