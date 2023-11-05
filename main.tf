@@ -51,7 +51,7 @@ resource "aws_instance" "example" {
   ami           = "ami-0287a05f0ef0e9d9a" # Replace with the actual AMI ID
   key_name      = "karim" # Replace with your key pair name
   instance_type = "t2.micro"     # Replace with the desired instance type
-  vpc_security_group_ids = [aws_security_group.super-secure.id]
+  vpc_security_group_id = [aws_security_group.module-secure.id]
 }
 
 # Create the DynamoDB table
