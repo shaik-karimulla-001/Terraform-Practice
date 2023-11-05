@@ -1,7 +1,7 @@
 # Specify the AWS provider and region using variables
 variable "aws_region" {
   type    = string
-  default = "us-east-1"
+  default = "ap-south-1"
 }
 
 # Create a VPC
@@ -48,7 +48,7 @@ resource "aws_security_group" "super-secure" {
 
 # Create an EC2 instance
 resource "aws_instance" "example" {
-  ami           = "ami-0fc5d935ebf8bc3bc" # Replace with the actual AMI ID
+  ami           = "ami-0287a05f0ef0e9d9a" # Replace with the actual AMI ID
   key_name      = "karim" # Replace with your key pair name
   instance_type = "t2.micro"     # Replace with the desired instance type
   vpc_security_group_ids = [aws_security_group.super-secure.id]
