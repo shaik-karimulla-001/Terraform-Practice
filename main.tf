@@ -47,7 +47,7 @@ resource "aws_security_group" "super-secure" {
 }
 
 # Create an EC2 instance
-resource "aws_instance" "yellow" {
+resource "aws_instance" "example" {
   ami           = "var.ami_id"
   key_name      = "var.key_name"
   instance_type = "var.instance_type"
