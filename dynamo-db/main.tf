@@ -1,7 +1,6 @@
-
 # Create the DynamoDB table
-resource "aws_dynamodb_table" "my-dynamodb-table" {
-  name           = "my-dynamodb-table"
+resource "aws_dynamodb_table" "my-dynamodb-table1" {
+  name           = "my-dynamodb-table1"
   billing_mode   = "PAY_PER_REQUEST"
   hash_key       = "my-apple-key"
   range_key      = "my-android-key"
