@@ -48,7 +48,7 @@ resource "aws_security_group" "super-secure" {
 
 # Create an EC2 instance
 resource "aws_instance" "example" {
-  ami           = "var.ami_id"
+  ami           = {var.ami_id}
   key_name      = "var.key_name"
   instance_type = "var.instance_type"
   vpc_security_group_ids = [aws_security_group.super-secure.id]
