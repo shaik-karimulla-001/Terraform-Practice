@@ -5,8 +5,10 @@ ami = "ami-0287a05f0ef0e9d9a"
 key_name = "karim"
 instance_type = "t2.micro"
 
-# my-dynamodb-table1.tfvars
+# create s3 bucket
+ bucket = "karim546-bucket"
 
+# my-dynamodb-table1.tfvars
 name = "my-dynamodb-table1"
 billing_mode = "PAY_PER_REQUEST"
 hash_key = "my-apple-key"
