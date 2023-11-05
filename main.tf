@@ -1,7 +1,7 @@
 # Specify the AWS provider and region using variables
 variable "aws_region" {
   type    = string
-  default = "us-east-1"  # You can set a default value or leave it empty
+  default = "us-east-1"
 }
 
 # Create a VPC
@@ -15,7 +15,7 @@ resource "aws_vpc" "main" {
 
 # Create a security group with firewall rules
 resource "aws_security_group" "super-secure" {
-  name        = "var.security_group"
+  name        = "super-secure"
   description = "Security group for EC2 instance"
 
   # Ingress rules
@@ -42,17 +42,16 @@ resource "aws_security_group" "super-secure" {
   }
 
   tags = {
-    Name = "var.security_group"
+    Name = "super-secure"
   }
 }
 
 # Create an EC2 instance
 resource "aws_instance" "example" {
-  ami           = "var.ami_id"
-  key_name      = "var.key_name"
-  instance_type = "var.instance_type"
+  ami           = "ami-0fc5d935ebf8bc3bc" # Replace with the actual AMI ID
+  key_name      = "karim" # Replace with your key pair name
+  instance_type = "t2.micro"     # Replace with the desired instance type
   vpc_security_group_ids = [aws_security_group.super-secure.id]
-  
 }
 
 # Create the DynamoDB table
@@ -71,10 +70,4 @@ resource "aws_dynamodb_table" "my-dynamodb-table" {
     name = "my-android-key"
     type = "N"
   }
-
-  # Define the provisioned throughput, if using "PROVISIONED" billing mode
-  # provisioned_throughput {
-  #   read_capacity  = 5
-  #   write_capacity = 5
-  # }
 }
