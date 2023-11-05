@@ -8,5 +8,5 @@ resource "aws_instance" "example" {
 }
 
 resource "key_name" {
-  default     = "var.key_name
+  default     = var.key_name
 }
