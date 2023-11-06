@@ -4,5 +4,4 @@ provider "aws" {
 }
 
 resource "aws_s3_bucket" "karim546-bucket" {
-  bucket = "karim546-bucket"
 }
