@@ -1,6 +1,6 @@
 output "public-ip-address" {
-  value = aws_instance.example.public_ip
+  value = aws_instance.module-instance.public_ip
 }
 output "private-ip-address" {
-  value =aws_instance.example.private-ip
+  value =aws_instance.module-instance.private-ip
 }
