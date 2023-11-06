@@ -48,7 +48,7 @@ resource "aws_security_group" "module-secure" {
 
 # Create an EC2 instance
 resource "aws_instance" "example" {
-  ami           = "ami-0287a05f0ef0e9d9a" # Replace with the actual AMI ID
+  ami           = "ami-02e94b011299ef128" # Replace with the actual AMI ID
   key_name      = "karim" # Replace with your key pair name
   instance_type = "t2.micro"     # Replace with the desired instance type
   vpc_security_group_ids = [aws_security_group.module-secure.id]
